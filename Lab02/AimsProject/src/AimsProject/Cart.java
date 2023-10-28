@@ -15,7 +15,7 @@ public class Cart {
         for(int i = 0; i < qtyOrdered; i++){
             if(itemsOrdered[i].getTitle() == disc.getTitle()){
                 for(int j = i; j < qtyOrdered; j++){
-                    itemsOrdered[j] = null;
+                    itemsOrdered[j] = itemsOrdered[j+1];
                 }
                 i--;
                 qtyOrdered--;
