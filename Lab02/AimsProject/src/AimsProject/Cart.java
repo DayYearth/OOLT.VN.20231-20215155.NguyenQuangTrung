@@ -49,7 +49,7 @@ public class Cart {
         }
     }
 
-    public void addDigitalVideoDisc(DigitalVideoDisc [] dvdList){
+    public void addDigitalVideoDisc(DigitalVideoDisc[] dvdList){
         int m = dvdList.length;
         if(m + this.getQtyOrdered() > 20){
             System.out.print("The cart is full!");
