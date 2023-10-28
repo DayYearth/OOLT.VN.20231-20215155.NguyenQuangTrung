@@ -43,13 +43,13 @@ public class Cart {
         return total;
     }
 
-    public void PrintCart(){
+    public void printCart(){
         for(int i = 0; i < qtyOrdered; i++){
             System.out.print(i+1 + " " + itemsOrdered[i].getTitle() + " " + itemsOrdered[i].getCost() + "\n");
         }
     }
 
-    public void addDigitalVideoDisc(DigitalVideoDisc [] dvdList){
+    public void addDigitalVideoDisc(DigitalVideoDisc[] dvdList){
         int m = dvdList.length;
         if(m + this.getQtyOrdered() > 20){
             System.out.print("The cart is full!");
