@@ -30,4 +30,10 @@ public class Cart {
         }
         return sum;
     }
+
+    public void printCart(){
+        for(int i = 0; i < qtyOrdered; i++){
+            System.out.print(i+1 + " " + itemsOrdered[i].getTitle() + " " + itemsOrdered[i].getCost() + "\n");
+        }
+    }
 }
