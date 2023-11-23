@@ -1,4 +1,7 @@
-package AimsProject;
+package AimsProject.hust.hedspi.aims;
+
+import AimsProject.hust.hedspi.aims.cart.Cart;
+import AimsProject.hust.hedspi.aims.disc.DigitalVideoDisc;
 
 public class Aims {
     public static void main(String[] args){

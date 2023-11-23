@@ -1,5 +1,7 @@
-package AimsProject;
+package AimsProject.hust.hedspi.aims.cart;
 
+
+import AimsProject.hust.hedspi.aims.disc.DigitalVideoDisc;
 
 public class Cart {
     public static final int MAX_NUMBERS_ORDERED = 20;
@@ -74,4 +76,18 @@ public class Cart {
         }
     }
 
+    public void printNewCart(){
+        System.out.println("***********************CART***********************");
+        for(int i = 0; i < qtyOrdered; i++){
+            System.out.println((i+1) + " DVD - " + "[" + itemsOrdered[i].getTitle() + "]"
+                                                + "[" + itemsOrdered[i].getCategory() + "]"
+                                                + "[" + itemsOrdered[i].getDirector() + "]"
+                                                + "[" + itemsOrdered[i].getLength() + "]" + ": "
+                                                + "[" + itemsOrdered[i].getCost() + "]" + " $");
+        }
+        float sumCost = 0;
+        for(int i = 0; i < qtyOrdered; i++) sumCost += itemsOrdered[i].getCost();
+        System.out.println("Total cost: " + "[" + sumCost + "]" + " $");
+        System.out.println("***************************************************");
+    }
 }

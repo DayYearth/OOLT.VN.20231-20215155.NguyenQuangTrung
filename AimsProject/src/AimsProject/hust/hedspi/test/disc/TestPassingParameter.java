@@ -1,4 +1,6 @@
-package AimsProject;
+package AimsProject.hust.hedspi.test.disc;
+
+import AimsProject.hust.hedspi.aims.disc.DigitalVideoDisc;
 
 public class TestPassingParameter {
     public static void main (String[] args){

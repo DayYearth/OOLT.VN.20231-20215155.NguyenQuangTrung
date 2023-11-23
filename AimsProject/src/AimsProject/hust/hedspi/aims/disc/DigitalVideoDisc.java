@@ -1,4 +1,4 @@
-package AimsProject;
+package AimsProject.hust.hedspi.aims.disc;
 
 public class DigitalVideoDisc {
     private String title;
@@ -83,4 +83,5 @@ public class DigitalVideoDisc {
         this.cost = cost;
         this.length = length;
     }
+
 }
