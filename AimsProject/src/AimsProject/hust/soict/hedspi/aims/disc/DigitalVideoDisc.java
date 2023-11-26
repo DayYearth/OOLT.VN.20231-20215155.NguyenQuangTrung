@@ -1,10 +1,13 @@
-package AimsProject.hust.hedspi.aims.disc;
+package AimsProject.hust.soict.hedspi.aims.disc;
 
-public class DigitalVideoDisc {
+import AimsProject.hust.soict.hedspi.media.Disc;
+import AimsProject.hust.soict.hedspi.media.Playable;
+
+public class DigitalVideoDisc extends Disc implements Playable {
     private String title;
     private String category;
     private String director;
-    private int length;
+    private float length;
     private float cost;
 
     //section 16
@@ -51,7 +54,7 @@ public class DigitalVideoDisc {
     public String getDirector(){
         return director;
     }
-    public int getLength(){
+    public float getLength(){
         return length;
     }
     public float getCost(){
@@ -83,5 +86,8 @@ public class DigitalVideoDisc {
         this.cost = cost;
         this.length = length;
     }
-
+    public void play() {
+        System.out.println("Playing DVD: " + this.getTitle());
+        System.out.println("DVD length: " + this.getLength());
+    }
 }

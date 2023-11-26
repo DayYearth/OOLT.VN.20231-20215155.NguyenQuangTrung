@@ -12,3 +12,19 @@ the title of the JungleDVD changed?
 
 Question: Is JAVA a Pass by Value or a Pass by Reference programming language?
     - Java là pass by value
+
+Question:
+- What are the advantages of Polymorphism?
+    + Giảm trùng lặp code
+    + Giảm thời gian sửa code
+- How is Inheritance useful to achieve Polymorphism in Java?
+    + Các method có thể có nhiều dạng khác nhau tùy vào object
+    + Giúp đoạn code dễ sửa và dễ mở rộng hơn
+- What are the differences between Polymorphism and Inheritance in Java?
+    * Đa hình:
+        + Các obj được chia thành nhiều dạng khác nhau
+        + Áp dụng lên cho các phương thúc
+    * Kế thừa:
+        + Các class con kế thừa từ 1 class và chỉ kế thừa các đặc điểm có trong class đó
+        + Áp dụng lên trên class
+        + Giảm sự lặp lại code
