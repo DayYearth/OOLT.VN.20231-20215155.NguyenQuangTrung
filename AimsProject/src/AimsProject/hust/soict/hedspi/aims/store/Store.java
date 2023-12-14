@@ -7,6 +7,10 @@ import java.util.Iterator;
 public class Store extends Media{
     private ArrayList<Media> itemsInStore = new ArrayList();
 
+    public ArrayList<Media> getItemsInStore() {
+        return itemsInStore;
+    }
+
     public void addMedia(Media tmp){
         for(Media x : itemsInStore){
             if(x.getTitle() == tmp.getTitle()){

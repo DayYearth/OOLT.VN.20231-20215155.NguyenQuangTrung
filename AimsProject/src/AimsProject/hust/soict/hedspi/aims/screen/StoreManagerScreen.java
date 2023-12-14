@@ -1,5 +1,6 @@
 package AimsProject.hust.soict.hedspi.aims.screen;
 
+import AimsProject.hust.soict.hedspi.aims.cart.Cart;
 import AimsProject.hust.soict.hedspi.aims.store.Store;
 import AimsProject.hust.soict.hedspi.media.Media;
 import AimsProject.hust.soict.hedspi.aims.disc.DigitalVideoDisc;
@@ -10,9 +11,7 @@ import java.awt.*;
 import java.util.ArrayList;
 
 //This will be our view store screen while logging in with the role Store Manager.
-public class StoreManagerScreen {
-    Store store; //information on the items in the store to display them.
-    public static class StoreScreen extends JFrame{
+public class StoreManagerScreen extends JFrame{
         private Store store;
         private JButton btnAddToCart, btnPlay;
 
@@ -77,41 +76,7 @@ public class StoreManagerScreen {
             return center;
         }
 
-        public class MediaStore extends JPanel {
-            private Media media;
-
-            public MediaStore(Media media) {
-                this.media = media;
-                this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-
-                JLabel title = new JLabel(media.getTitle());
-                title.setFont(new Font(title.getFont().getName(), Font.PLAIN, 20));
-                title.setAlignmentX(CENTER_ALIGNMENT);
-
-                JLabel cost = new JLabel("" + media.getCost() + " $");
-                cost.setAlignmentX(CENTER_ALIGNMENT);
-
-                JPanel container = new JPanel();
-                container.setLayout(new FlowLayout(FlowLayout.CENTER));
-
-                if(media instanceof Playable) {
-                    JButton playButton = new JButton("Play");
-                    container.add(playButton);
-                }
-
-                this.add(Box.createVerticalGlue());
-                this.add(title);
-                this.add(cost);
-                this.add(Box.createVerticalGlue());
-                this.add(container);
-
-                this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-            }
-        }
-
-
-
-        public StoreScreen(Store store) {
+        public StoreManagerScreen(Store store) {
             this.store = store;
             Container cp = getContentPane();
             cp.setLayout(new BorderLayout());
@@ -122,14 +87,12 @@ public class StoreManagerScreen {
             setVisible(true);
             setTitle("Store");
             setSize(1024, 768);
+            setLocationRelativeTo(null);
         }
 
-        public static void main(String[] args) {
+        public static void main(String[] args){
             Store store = new Store();
-            DigitalVideoDisc dvd1 = new DigitalVideoDisc("The Lion King", "Animation", "Roger Allers", 87, 19.95f);
-            store.addMedia(dvd1);
-            new StoreManagerScreen();
-        }
+            new StoreManagerScreen(store);
     }
 
 }

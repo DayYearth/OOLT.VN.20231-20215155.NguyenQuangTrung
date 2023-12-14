@@ -60,6 +60,18 @@ public class Cart {
 
         return null;
     }
+    public boolean search(int id) {
+        Iterator tmp = this.itemsOrdered.iterator();
+
+        while(tmp.hasNext()) {
+            Media m = (Media)tmp.next();
+            if (m.getId() == id) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 
     public boolean search(String title) {
         Iterator tmp = this.itemsOrdered.iterator();

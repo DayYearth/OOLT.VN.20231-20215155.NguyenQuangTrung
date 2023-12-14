@@ -1,9 +1,8 @@
 package AimsProject.hust.soict.hedspi.aims;
 
-
-import javax.naming.LimitExceededException;
 import java.util.Scanner;
 import AimsProject.hust.soict.hedspi.aims.cart.Cart;
+import AimsProject.hust.soict.hedspi.aims.screen.StoreManagerScreen;
 import AimsProject.hust.soict.hedspi.aims.store.Store;
 
 public class Aims {
@@ -15,7 +14,6 @@ public class Aims {
         System.out.println("3. See current cart");
         System.out.println("0. Exit");
         System.out.println("--------------------------------");
-        System.out.println("Please choose a number: 0-1-2-3");
     }
 
     public static void storeMenu() {
@@ -27,7 +25,6 @@ public class Aims {
         System.out.println("4. See current cart");
         System.out.println("0. Back");
         System.out.println("--------------------------------");
-        System.out.println("Please choose a number: 0-1-2-3-4");
     }
 
     public static void mediaDetailsMenu() {
@@ -37,7 +34,6 @@ public class Aims {
         System.out.println("2. Play");
         System.out.println("0. Back");
         System.out.println("--------------------------------");
-        System.out.println("Please choose a number: 0-1-2");
     }
 
     public static void cartMenu() {
@@ -50,7 +46,6 @@ public class Aims {
         System.out.println("5. Place order");
         System.out.println("0. Back");
         System.out.println("--------------------------------");
-        System.out.println("Please choose a number: 0-1-2-3-4-5");
     }
 
     public static void seeAMediaDetails(Scanner sc, Cart anOrder, Store anStore) {
@@ -94,9 +89,120 @@ public class Aims {
         System.out.print("Order Success");
         anOrder.removeMediaAll();
     }
+    public static void cart_menu(Scanner sc, Cart anOrder, Store anStore) {
+        int k = sc.nextInt();
+        switch (k){
+            case 0:
+                showMenu();
+                menu(sc, anOrder, anStore);
+                break;
+            case 1:
+                MenuFunction.filterMediaInCart(sc, anOrder);
+                break;
+            case 2:
+                MenuFunction.sortMediaInCart(sc, anOrder);
+                break;
+            case 3:
+                removeMediaFromCart(sc, anOrder);
+                break;
+            case 4:
+                playMedia(sc, anOrder, anStore);
+                break;
+            case 5:
+                placeOrder(sc, anOrder);
+                break;
+            default:
+                break;
+        }
+    }
+    public static void menu(Scanner sc, Cart anOrder, Store anStore) {
+        int k = sc.nextInt();
+        switch (k){
+            case 0:
+                System.out.println("Exit");
+                return;
+            case 1:
+                anStore.printStore();
+                storeMenu();
+                store_menu_1(sc, anOrder, anStore);
+                break;
+            case 2:
+                MenuFunction.UpdateStore(sc, anStore);
+                break;
+            case 3:
+                anOrder.printCart();
+                cartMenu();
+                cart_menu(sc, anOrder, anStore);
+                break;
+            default:
+                break;
+        }
+        showMenu();
+        Scanner sc1 = new Scanner(System.in);
+        Cart anOrder1 = new Cart();
+        Store anStore1 = new Store();
+        menu(sc1, anOrder1, anStore1);
+        return;
+    }
+    public static void store_menu_1(Scanner sc, Cart anOrder, Store anStore) {
+        int k = sc.nextInt();
+        switch (k){
+            case 0:
+                showMenu();
+                menu(sc, anOrder, anStore);
+                break;
+            case 1:
+                seeAMediaDetails(sc, anOrder, anStore);
+                mediaDetailsMenu();
+                mediaDetails(sc, anOrder, anStore);
+                break;
+            case 2:
+                MenuFunction.addToCart(sc, anOrder, anStore);
+                anOrder.printLength();
+                break;
+            case 3:
+                playMedia(sc, anOrder, anStore);
+                break;
+            case 4:
+                anOrder.printCart();
+                cartMenu();
+                cart_menu(sc, anOrder, anStore);
+                break;
+            default:
+                break;
+        }
+    }
 
-
+    public static void mediaDetails(Scanner sc, Cart anOrder, Store anStore) {
+        int k = sc.nextInt();
+        switch (k) {
+            case 0:
+                storeMenu();
+                store_menu_1(sc, anOrder, anStore);
+                break;
+            case 1:
+                playMedia(sc, anOrder, anStore);
+                break;
+            case 2:
+                MenuFunction.addToCart(sc, anOrder, anStore);
+            default:
+                break;
+        }
+    }
+    public void newMenu(){
+        showMenu();
+        Scanner sc = new Scanner(System.in);
+        Cart anOrder = new Cart();
+        Store anStore = new Store();
+        menu(sc, anOrder, anStore);
+    }
     public static void main(String[] args){
-
+            showMenu();
+            Scanner sc = new Scanner(System.in);
+            Cart anOrder = new Cart();
+            Store anStore = new Store();
+            menu(sc, anOrder, anStore);
+            sc.close();
+            return;
     }
 }
