@@ -1,17 +1,17 @@
 package hust.soict.hedspi.aims.disc;
 
+import hust.soict.hedspi.aims.media.Disc;
 import hust.soict.hedspi.aims.media.Media;
 
-public class DigitalVideoDisc extends Media {
+public class DigitalVideoDisc  extends Disc {
     private static int nbDigitalVideoDiscs = 0;
     private static int idCounter = 1;
     private String director = "";
     private int length = 0;
 
     public DigitalVideoDisc(String title, String category, String director, int length, float cost) {
-        super(idCounter++, title, category, cost);
-        this.director = director;
-        this.length = length;
+        super(idCounter++, title, category, cost, length, director);
+
 
         nbDigitalVideoDiscs++;
     }
