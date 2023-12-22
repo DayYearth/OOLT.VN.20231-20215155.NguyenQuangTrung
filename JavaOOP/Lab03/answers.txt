@@ -1,0 +1,37 @@
+- What class should implement the Comparable interface?
+=> The class that represents the objects you want to compare should implement the Comparable interface. In this case, it's the Media class.
+
+- How should you implement the compareTo() method to reflect the ordering that we want?
+=> The compareTo() method should return a negative integer, zero, or a positive integer as this object is less than, equal to, or greater than the specified object. You can implement it based on the desired ordering.
+
+- Can we have two ordering rules of the item (by title then cost and by cost then title) if we use this Comparable interface approach?
+=? No, the compareTo() method in the Comparable interface allows only one ordering rule. If you want to have multiple ordering rules, you should use the Comparator approach.
+
+- Suppose the DVDs have a different ordering rule from the other media types (title, decreasing length, then cost). How would you modify your code to allow this?
+=> Modified Media Class:
+package hust.soict.hedspi.aims.media;
+
+public class Media implements Comparable<Media> {
+    @Override
+    public int compareTo(Media other) {
+        // Common ordering rule for all media types (by title)
+        int titleComparison = this.getTitle().compareToIgnoreCase(other.getTitle());
+        
+        if (this instanceof DigitalVideoDisc && other instanceof DigitalVideoDisc) {
+            // Additional rule for DVDs (decreasing length)
+            int lengthComparison = Integer.compare(((DigitalVideoDisc) other).getLength(), ((DigitalVideoDisc) this).getLength());
+            
+            if (lengthComparison == 0) {
+                // If length is the same, compare by cost
+                return Float.compare(this.getCost(), other.getCost());
+            }
+            
+            return lengthComparison;
+        }
+
+        // For non-DVD media types, continue with the common rule (by title)
+        return titleComparison;
+    }
+}
+
+Now, DVDs will be sorted by title, decreasing length, then cost, while other media types will be sorted only by title.
