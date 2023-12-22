@@ -1,3 +1,7 @@
+package hust.soict.hedspi.aims.cart;
+
+import hust.soict.hedspi.aims.disc.DigitalVideoDisc;
+
 public class Cart {
     public static final int MAX_NUMBERS_ORDER = 20;
     private DigitalVideoDisc itemOrdered[] = new DigitalVideoDisc[MAX_NUMBERS_ORDER];
