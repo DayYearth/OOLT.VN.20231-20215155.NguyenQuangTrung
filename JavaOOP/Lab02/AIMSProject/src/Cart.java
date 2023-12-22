@@ -9,8 +9,9 @@ public class Cart {
             return;
         }
 
-        qtyOrdered++;
         itemOrdered[qtyOrdered] = disc;
+        qtyOrdered++;
+
         System.out.println("The disc has been added");
     }
 
