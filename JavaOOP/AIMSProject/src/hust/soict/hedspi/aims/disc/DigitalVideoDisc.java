@@ -1,55 +1,25 @@
 package hust.soict.hedspi.aims.disc;
 
-public class DigitalVideoDisc {
+import hust.soict.hedspi.aims.media.Media;
+
+public class DigitalVideoDisc extends Media {
     private static int nbDigitalVideoDiscs = 0;
     private static int idCounter = 1;
-    private int id;
-
-
-    private String title = "";
-    private String category = "";
     private String director = "";
     private int length = 0;
-    private float cost = 0;
 
     public DigitalVideoDisc(String title, String category, String director, int length, float cost) {
-        this.title = title;
-        this.category = category;
+        super(idCounter++, title, category, cost);
         this.director = director;
         this.length = length;
-        this.cost = cost;
 
         nbDigitalVideoDiscs++;
-        this.id = idCounter++;
-
     }
 
     public DigitalVideoDisc(String title){
-        this.title = title;
+        super(idCounter++, title);
         
         nbDigitalVideoDiscs++;
-        this.id = idCounter++;
-
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
     }
 
     public String getDirector() {
@@ -68,21 +38,13 @@ public class DigitalVideoDisc {
         this.length = length;
     }
 
-    public float getCost() {
-        return cost;
-    }
-
-    public void setCost(float cost) {
-        this.cost = cost;
-    }
-
     @Override
     public String toString() {
         return String.format("DVD - %s - %s - %s - %d minutes: %.2f $",
-                title, category, director, length, cost);
+                getTitle(), getCategory(), director, length, getCost());
     }
 
     public boolean isMatch(String title) {
-        return this.title.equalsIgnoreCase(title);
+        return getTitle().equalsIgnoreCase(title);
     }
 }
