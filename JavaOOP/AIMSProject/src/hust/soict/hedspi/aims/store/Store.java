@@ -29,12 +29,27 @@ public class Store {
         }
     }
 
-    // Display the list of items in the store
     public void listMedia() {
         System.out.println("*************** Items in the Store ***************");
         for (Media media : itemsInStore) {
             System.out.println(media.toString());
         }
         System.out.println("***************************************************");
+    }
+
+    public void displayStore() {
+        System.out.println("Items in the Store:");
+        for (Media media : itemsInStore) {
+            System.out.println(media);
+        }
+    }
+
+    public Media findMediaByTitle(String title) {
+        for (Media media : itemsInStore) {
+            if (media.getTitle().equalsIgnoreCase(title)) {
+                return media;
+            }
+        }
+        return null;
     }
 }

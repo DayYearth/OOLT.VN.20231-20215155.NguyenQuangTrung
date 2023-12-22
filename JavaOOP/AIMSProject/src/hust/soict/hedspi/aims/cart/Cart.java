@@ -3,8 +3,7 @@ package hust.soict.hedspi.aims.cart;
 import hust.soict.hedspi.aims.disc.DigitalVideoDisc;
 import hust.soict.hedspi.aims.media.Media;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Cart {
     public static final int MAX_NUMBERS_ORDER = 20;
@@ -33,6 +32,19 @@ public class Cart {
         } else {
             System.out.println("Media not found in the cart. Remove failed.");
         }
+    }
+
+    public void removeMedia(String mediaTitle) {
+        Iterator<Media> iterator = itemsOrdered.iterator();
+        while (iterator.hasNext()) {
+            Media media = iterator.next();
+            if (media.getTitle().equalsIgnoreCase(mediaTitle)) {
+                iterator.remove();
+                System.out.println("Media '" + mediaTitle + "' removed from the cart.");
+                return;
+            }
+        }
+        System.out.println("Media '" + mediaTitle + "' not found in the cart.");
     }
 
     public void addDigitalVideoDisc(DigitalVideoDisc[] disc) {
@@ -122,5 +134,44 @@ public class Cart {
         }
     }
 
+    public Media findMediaByTitle(String title) {
+        for (Media media : itemsOrdered) {
+            if (media.getTitle().equalsIgnoreCase(title)) {
+                return media;
+            }
+        }
+        return null; // Media not found in the cart
+    }
 
+    public List<Media> filterMediaById(int id) {
+        List<Media> filteredMedia = new ArrayList<>();
+        for (Media media : itemsOrdered) {
+            if (media.getId() == id) {
+                filteredMedia.add(media);
+            }
+        }
+        return filteredMedia;
+    }
+
+    public List<Media> filterMediaByTitle(String title) {
+        List<Media> filteredMedia = new ArrayList<>();
+        for (Media media : itemsOrdered) {
+            if (media.getTitle().equalsIgnoreCase(title)) {
+                filteredMedia.add(media);
+            }
+        }
+        return filteredMedia;
+    }
+
+    public void sortMediaByTitle() {
+        Collections.sort(itemsOrdered, Comparator.comparing(Media::getTitle));
+    }
+
+    public void sortMediaByCost() {
+        Collections.sort(itemsOrdered, Comparator.comparingDouble(Media::getCost).reversed());
+    }
+
+    public void clear() {
+        itemsOrdered.clear();
+    }
 }
