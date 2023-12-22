@@ -2,6 +2,9 @@ package hust.soict.hedspi.aims.disc;
 
 public class DigitalVideoDisc {
     private static int nbDigitalVideoDiscs = 0;
+    private static int idCounter = 1;
+    private int id;
+
 
     private String title = "";
     private String category = "";
@@ -17,12 +20,20 @@ public class DigitalVideoDisc {
         this.cost = cost;
 
         nbDigitalVideoDiscs++;
+        this.id = idCounter++;
+
     }
 
     public DigitalVideoDisc(String title){
         this.title = title;
         
         nbDigitalVideoDiscs++;
+        this.id = idCounter++;
+
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getTitle() {
@@ -63,5 +74,15 @@ public class DigitalVideoDisc {
 
     public void setCost(float cost) {
         this.cost = cost;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("DVD - %s - %s - %s - %d minutes: %.2f $",
+                title, category, director, length, cost);
+    }
+
+    public boolean isMatch(String title) {
+        return this.title.equalsIgnoreCase(title);
     }
 }
