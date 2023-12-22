@@ -2,26 +2,26 @@ package hust.soict.hedspi.aims;
 
 import hust.soict.hedspi.aims.cart.Cart;
 import hust.soict.hedspi.aims.disc.DigitalVideoDisc;
+import hust.soict.hedspi.aims.media.Book;
+import hust.soict.hedspi.aims.media.Media;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Aims {
     public static void main(String[] args) {
-        Cart anOrder = new Cart();
+        // Create an ArrayList of Media
+        List<Media> mediaList = new ArrayList<>();
 
-        DigitalVideoDisc dvd1 = new DigitalVideoDisc("The Lion King", "Animation",
-                "Roger Allers", 87, 19.95f);
-        anOrder.addDigitalVideoDisc(dvd1);
+        // Add some media (DVD, Book) into the list
+        mediaList.add(new DigitalVideoDisc("Movie DVD", "Movie", "Director", 150f));
+        mediaList.add(new Book("Java Book", "Programming", 29.99f, Arrays.asList("au1", "au2")));
 
-        DigitalVideoDisc dvd2 = new DigitalVideoDisc("Star Wars", "Science Fiction",
-                "Geogre Lucas", 87, 24.95f);
-        anOrder.addDigitalVideoDisc(dvd2);
-
-        DigitalVideoDisc dvd3 = new DigitalVideoDisc("Aladin", "Animation", "", 0, 18.99f);
-        anOrder.addDigitalVideoDisc(dvd3);
-
-        System.out.println("Total cost is: " + anOrder.totalCost());
-
-        anOrder.removeDigitalVideoDisc(dvd2);
-        System.out.println("Total cost is: " + anOrder.totalCost());
+        // Iterate through the list and print out the information of the media using toString()
+        for (Media media : mediaList) {
+            System.out.println(media.toString());
+        }
 
     }
 }

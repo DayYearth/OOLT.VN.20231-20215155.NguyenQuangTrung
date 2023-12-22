@@ -10,6 +10,13 @@ public class Book extends Media {
         this.authors = new ArrayList<>();
     }
 
+    public Book(String title, String category, float cost, List<String> authors) {
+        this.setTitle(title);
+        this.setCategory(category);
+        this.setCost(cost);
+        this.authors = authors;
+    }
+
     public Book(int id, String title, String category, float cost) {
         super(id, title, category, cost);
 
